@@ -3,7 +3,7 @@ import streamlit as st
 import os
 from openai import OpenAI
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"]
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("PortoGo: Moving to Portugal Made Simple")
 st.write("Ask me anything about relocating from the U.S. to Portugal!")
