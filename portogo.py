@@ -5,11 +5,11 @@ import os
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.title("PortoPal: Moving to Portugal Made Simple")
+st.title("PortoGo: Moving to Portugal Made Simple")
 st.write("Ask me anything about relocating from the U.S. to Portugal!")
 
 # Capture user input
-user_input = st.text_input("What do you need help with?")
+user_input = st.text_input("How can i help you today?")
 
 # Make API call
 if user_input:
