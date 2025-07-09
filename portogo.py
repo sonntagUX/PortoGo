@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 
-st.title("PortoGo (Free GPT via Hugging Face)")
+st.title("PortoGo (Powered by Hugging Face)")
 st.write("Ask me anything about relocating from the U.S. to Portugal!")
 
-user_input = st.text_input("Your question")
+user_input = st.text_input("How can I help you today?")
 
 if user_input:
     with st.spinner("Thinking..."):
@@ -17,4 +17,4 @@ if user_input:
             output = response.json()[0]["generated_text"]
             st.success(output.split("### Response:")[-1].strip())
         else:
-            st.error("Failed to get a response. Try again later.")
+            st.error("Failed to get a response. Please try again later.")
