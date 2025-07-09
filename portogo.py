@@ -2,7 +2,7 @@ from openai import OpenAI
 import streamlit as st
 
 st.title("PortoGo: Moving to Portugal Made Simple")
-st.write("Ask me anything about relocating from the U.S. to Portugal!")
+st.write("Choose a question to learn more about moving from the U.S. to Portugal:")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -16,10 +16,27 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("How can I help you today?"):
-    st.session_state.messages.append({"role": "user", "content": prompt})
+# Preset questions
+questions = [
+    "What visas are available for Americans moving to Portugal?",
+    "What is the cost of living in Lisbon compared to Los Angeles, CA?",
+    "Can I work remotely from Portugal?",
+    "How do I find housing in Portugal?",
+    "What is the healthcare system like in Portugal?"
+]
+
+# Display question buttons
+selected_prompt = None
+for question in questions:
+    if st.button(question):
+        selected_prompt = question
+        break
+
+# Generate response if a button was clicked
+if selected_prompt:
+    st.session_state.messages.append({"role": "user", "content": selected_prompt})
     with st.chat_message("user"):
-        st.markdown(prompt)
+        st.markdown(selected_prompt)
 
     with st.chat_message("assistant"):
         stream = client.chat.completions.create(
