@@ -1,2 +1,2 @@
-gpt4all
 streamlit
+requests
