@@ -1,2 +1,2 @@
-openai
+gpt4all
 streamlit
