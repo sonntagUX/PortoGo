@@ -7,6 +7,8 @@ st.set_page_config(page_title="PortoGo Relocation Assistant")
 logo = Image.open("portogologo.png")
 logo = logo.resize((200, 200), Image.LANCZOS)
 st.header("PortoGo")
+st.image(logo)
+
 st.subheader("Visa Eligibility Assistant")
 st.text("Let's get started! Please answer the following questions so we can assess your situation and offer the best advice.")
 
