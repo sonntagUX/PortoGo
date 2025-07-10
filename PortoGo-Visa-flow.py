@@ -1,10 +1,11 @@
 import streamlit as st
+from PIL import Image
 
 st.set_page_config(page_title="PortoGo Relocation Assistant", page_icon="🇵🇹")
 
 st.title("🇵🇹 PortoGo Visa Eligibility Assistant")
 # Logo
-logo = image.open("portogologo.png")
+logo = Image.open("portogologo.png")
 st.image(logo, width=200)
 
 
