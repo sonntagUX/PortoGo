@@ -1,5 +1,5 @@
 def start_chat():
-    print("Welcome to the PortoPal Visa Eligibility Assistant!\n")
+    print("Welcome to the PortoGo Visa Eligibility Assistant!\n")
     input("Press Enter to begin...")
 
     # Question 1: Reason for relocating
