@@ -87,7 +87,7 @@ if st.session_state.step == 2:
     with st.form(key="income_form"):
         col1, col2, col3 = st.columns(3)
         with col1:
-            submit_low = st.form_submit_button("Below $1000")
+            submit_low = st.form_submit_button("Below $1,000")
         with col2:
             submit_mid = st.form_submit_button("1000 - 3000")
         with col3:
