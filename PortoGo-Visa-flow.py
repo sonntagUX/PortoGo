@@ -2,10 +2,10 @@ import streamlit as st
 
 st.set_page_config(page_title="PortoGo Relocation Assistant", page_icon="🇵🇹")
 
-st.title("🇵🇹 PortoPal Visa Eligibility Assistant")
-# Load and display logo
+st.title("🇵🇹 PortoGo Visa Eligibility Assistant")
+# Logo
 logo = Image.open("portogologo.png")
-st.image(logo, width=200)  # Adjust width as needed
+st.image(logo, width=200) 
 
 # Question 1
 st.subheader("Q1. Why are you relocating to Portugal?")
