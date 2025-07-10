@@ -61,11 +61,11 @@ if st.session_state.step == 1:
     with st.form(key="relocation_form"):
         col1, col2, col3 = st.columns(3)
         with col1:
-            submit_nomad = st.form_submit_button("🧑‍💻 Digital Nomad")
+            submit_nomad = st.form_submit_button("Digital Nomad")
         with col2:
-            submit_retired = st.form_submit_button("👵 Retired")
+            submit_retired = st.form_submit_button("Retired")
         with col3:
-            submit_family = st.form_submit_button("👨‍👩‍👧 Family Reunion")
+            submit_family = st.form_submit_button("Family Reunion")
 
         if submit_nomad:
             st.session_state.relocation_reason = "I am a digital nomad"
@@ -87,11 +87,11 @@ if st.session_state.step == 2:
     with st.form(key="income_form"):
         col1, col2, col3 = st.columns(3)
         with col1:
-            submit_low = st.form_submit_button("💵 Below $1,000")
+            submit_low = st.form_submit_button("Below $1,000")
         with col2:
-            submit_mid = st.form_submit_button("💵 $1,000 - $3,000")
+            submit_mid = st.form_submit_button("$1,000 - $3,000")
         with col3:
-            submit_high = st.form_submit_button("💵 Above $3,000")
+            submit_high = st.form_submit_button("Above $3,000")
 
         if submit_low:
             st.session_state.income_range = "Below $1,000"
@@ -108,7 +108,7 @@ if st.session_state.step == 3:
     st.markdown(f"<div style='text-align: left;'>**Q2. What is your monthly income or savings?**</div>", unsafe_allow_html=True)
     st.markdown(f"<div style='text-align: right; color: green;'>{st.session_state.income_range}</div>", unsafe_allow_html=True)
     st.write("---")
-    st.markdown("### 📝 Result:")
+    st.markdown("### Result:")
 
     reason = st.session_state.relocation_reason
     income = st.session_state.income_range
@@ -126,4 +126,4 @@ if st.session_state.step == 3:
     elif reason == "Family reunion":
         st.success("You may qualify for a Family Reunification Visa. Your sponsor in Portugal must provide documents.")
 
-    st.markdown("✅ *This is a general guide. Please consult the Portuguese consulate for official requirements.*")
+    st.markdown("*This is a general guide. Please consult the Portuguese consulate for official requirements.*")
