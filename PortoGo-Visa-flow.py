@@ -89,7 +89,7 @@ if st.session_state.step == 2:
         with col1:
             submit_low = st.form_submit_button("Below $1,000")
         with col2:
-            submit_mid = st.form_submit_button("$1,000 - $3,000")
+            submit_mid = st.form_submit_button("$1000 - $3000")
         with col3:
             submit_high = st.form_submit_button("Above $3,000")
 
