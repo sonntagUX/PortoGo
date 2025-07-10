@@ -80,7 +80,7 @@ if st.session_state.step == 1:
 # STEP 2
 if st.session_state.step == 2:
     st.markdown(f"<div style='text-align: left;'>**Q1. Why are you relocating to Portugal?**</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='text-align: right; color: green;'>{st.session_state.relocation_reason}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: left; color: green;'>{st.session_state.relocation_reason}</div>", unsafe_allow_html=True)
     st.write("---")
     st.markdown("**Q2. What is your monthly income or savings? (USD)**")
 
@@ -106,7 +106,7 @@ if st.session_state.step == 2:
 # STEP 3
 if st.session_state.step == 3:
     st.markdown(f"<div style='text-align: left;'>**Q2. What is your monthly income or savings?**</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='text-align: right; color: green;'>{st.session_state.income_range}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: left; color: green;'>{st.session_state.income_range}</div>", unsafe_allow_html=True)
     st.write("---")
     st.markdown("### Result:")
 
