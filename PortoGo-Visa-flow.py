@@ -5,7 +5,8 @@ st.set_page_config(page_title="PortoGo Relocation Assistant", page_icon="🇵�
 st.title("🇵🇹 PortoGo Visa Eligibility Assistant")
 # Logo
 logo = image.open("portogologo.png")
-st.image(logo, width=200) 
+st.image(logo, width=200)
+image.show()
 
 # Question 1
 st.subheader("Q1. Why are you relocating to Portugal?")
