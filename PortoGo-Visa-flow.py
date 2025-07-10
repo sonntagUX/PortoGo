@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.set_page_config(page_title="PortoPal Visa Assistant", page_icon="🇵🇹")
+st.set_page_config(page_title="PortoGo Relocation Assistant", page_icon="🇵🇹")
 
 st.title("🇵🇹 PortoPal Visa Eligibility Assistant")
 
