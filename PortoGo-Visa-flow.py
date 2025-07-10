@@ -4,10 +4,10 @@ from PIL import Image
 st.set_page_config(page_title="PortoGo Relocation Assistant")
 
 # Logo and intro
-logo = Image.open("portogologo.png")
-logo = logo.resize((300, 200), Image.LANCZOS)
-st.header("PortoGo")
+logo = Image.open("Portogo-bot-logo.png")
 st.image(logo)
+
+st.header("PortoGo")
 
 st.subheader("Visa Eligibility Assistant")
 st.text("Let's get started! Please answer the following questions so we can assess your situation and offer the best advice.")
