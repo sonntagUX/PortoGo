@@ -53,13 +53,39 @@ if st.session_state.step >= 2:
 
     col1, col2, col3 = st.columns([1, 1, 1])
     with col1:
-        if st.button("💵 Below $1,000"):
+        if st.button("Below $1,000"):
             st.session_state.income_range = "Below $1,000"
             st.session_state.step = 3
     with col2:
-        if st.button("💵 $1,000 - $3,000"):
+        if st.button("$1,000 - $3,000"):
             st.session_state.income_range = "$1,000 - $3,000"
             st.session_state.step = 3
     with col3:
-        if st.button("💵
+        if st.button("💵 Above $3,000"):
+            st.session_state.income_range = "Above $3,000"
+            st.session_state.step = 3
 
+# --- STEP 3: Results
+if st.session_state.step >= 3:
+    st.markdown(f"<div style='text-align: left;'>**Q2. What is your monthly income or savings?**</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align: right; color: green;'>{st.session_state.income_range}</div>", unsafe_allow_html=True)
+    st.write("---")
+    st.markdown("### 📝 Result:")
+
+    reason = st.session_state.relocation_reason
+    income = st.session_state.income_range
+
+    if reason == "I am a digital nomad":
+        if income == "Above $3,000":
+            st.success("You may qualify for the D8 Digital Nomad Visa. Start gathering proof of remote income.")
+        else:
+            st.warning("Digital Nomad visa usually requires proof of higher income. You might need a co-sponsor or alternative path.")
+    elif reason == "I am retired":
+        if income in ["$1,000 - $3,000", "Above $3,000"]:
+            st.success("You may qualify for the D7 Retirement Visa. Savings and pension documents will be needed.")
+        else:
+            st.warning("You may need to show additional financial resources or apply with a co-signer.")
+    elif reason == "Family reunion":
+        st.success("You may qualify for a Family Reunification Visa. Your sponsor in Portugal must provide documents.")
+
+    st.markdown("✅ *This is a general guide. Please consult the Portuguese consulate for official requirements.*")
