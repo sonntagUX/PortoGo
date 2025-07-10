@@ -1,5 +1,5 @@
 def start_chat():
-    print("\n🇵🇹 Welcome to the PortoPal Visa Eligibility Assistant!\n")
+    print("Welcome to the PortoPal Visa Eligibility Assistant!\n")
     input("Press Enter to begin...")
 
     # Question 1: Reason for relocating
@@ -13,7 +13,7 @@ def start_chat():
         if choice1 in ["1", "2", "3"]:
             break
         else:
-            print("Please choose 1, 2, or 3.")
+            print("Please choose an option.")
 
     # Question 2: Income level
     print("\nQ2. What is your monthly income or savings? (USD)")
@@ -26,7 +26,7 @@ def start_chat():
         if choice2 in ["1", "2", "3"]:
             break
         else:
-            print("Please choose 1, 2, or 3.")
+            print("Please choose an option.")
 
     # Decision logic
     print("\n📝 Result:")
@@ -45,7 +45,7 @@ def start_chat():
         print("You may qualify for a Family Reunification Visa. Your sponsor in Portugal must provide documents.")
 
     print("\n✅ This is a general guide. Consult the Portuguese consulate for official requirements.")
-    print("Thank you for using PortoPal!\n")
+    print("Thank you for using PortoGo!\n")
 
 if __name__ == "__main__":
     start_chat()
