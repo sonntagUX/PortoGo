@@ -5,7 +5,7 @@ st.set_page_config(page_title="PortoGo Relocation Assistant")
 
 # Logo and intro
 logo = Image.open("portogologo.png")
-logo = logo.resize((200, 300), Image.LANCZOS)
+logo = logo.resize((300, 200), Image.LANCZOS)
 st.header("PortoGo")
 st.image(logo)
 
