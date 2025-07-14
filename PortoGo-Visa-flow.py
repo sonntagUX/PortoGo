@@ -34,7 +34,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Logo and intro
-logo = Image.open("portogo/Portogo-bot-logo.png")
+logo = Image.open("Portogo-bot-logo.png")
 st.image(logo)
 
 st.header("PortoGo")
