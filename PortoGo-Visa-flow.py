@@ -1,6 +1,9 @@
 import streamlit as st
 from PIL import Image
 
+if "has_housing" not in st.session_state:
+    st.session_state.has_housing = None
+    
 st.set_page_config(page_title="PortoGo Relocation Assistant")
 
 # Load CSS style
@@ -31,7 +34,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Logo and intro
-logo = Image.open("Portogo-bot-logo.png")
+logo = Image.open("portogo/Portogo-bot-logo.png")
 st.image(logo)
 
 st.header("PortoGo")
@@ -52,7 +55,6 @@ def reset():
     st.session_state.relocation_reason = None
     st.session_state.income_range = None
 
-st.button("🔄 Restart", on_click=reset)
 
 # STEP 1
 if st.session_state.step == 1:
@@ -89,24 +91,24 @@ if st.session_state.step == 2:
         with col1:
             submit_low = st.form_submit_button("Below \\$1,000")
         with col2:
-            submit_mid = st.form_submit_button("\\$1,000 - \\$3,000")
+            submit_mid = st.form_submit_button("\\$1,000 - $3,000")
         with col3:
             submit_high = st.form_submit_button("Above \\$3,000")
 
         if submit_low:
-            st.session_state.income_range = "Below $1,000"
-            st.session_state.step = 3
+             st.session_state.income_range = "Below $1,000"
+             st.session_state.step = 3
         elif submit_mid:
-            st.session_state.income_range = "$1,000 - $3,000"
-            st.session_state.step = 3
+             st.session_state.income_range = "\$"+"1,000 "+  "- " +"$"+"3,000"
+             st.session_state.step = 3
         elif submit_high:
             st.session_state.income_range = "Above $3,000"
             st.session_state.step = 3
 
 # STEP 3
 if st.session_state.step == 3:
-    st.markdown(f"<div style='text-align: left;'>**Q2. What is your monthly income or savings?**</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='text-align: left; color: green;'>{st.session_state.income_range}</div>", unsafe_allow_html=True)
+    st.markdown(f"**Q2. What is your monthly income or savings?**", unsafe_allow_html=True)
+    st.markdown(f"<span style='color: green;'>{st.session_state.income_range}</span>", unsafe_allow_html=True)
     st.write("---")
     st.markdown("### Result:")
 
@@ -127,3 +129,64 @@ if st.session_state.step == 3:
         st.success("You may qualify for a Family Reunification Visa. Your sponsor in Portugal must provide documents.")
 
     st.markdown("*This is a general guide. Please consult the Portuguese consulate for official requirements.*")
+    st.write("---")
+    next_clicked = st.button("➡️ Next Question")
+    if next_clicked:
+        st.session_state.step = 4
+        st.rerun()
+    # STEP 4
+if st.session_state.step == 4:
+    st.markdown(f"<div style='text-align: left;'>**Q3. Do you already have housing arranged in Portugal?**</div>", unsafe_allow_html=True)
+
+    with st.form(key="housing_form"):
+        col1, col2 = st.columns(2)
+        with col1:
+            has_housing_yes = st.form_submit_button("Yes")
+        with col2:
+            has_housing_no = st.form_submit_button("No")
+
+        if has_housing_yes:
+            st.session_state.has_housing = "Yes"
+            st.session_state.step = 5
+        elif has_housing_no:
+            st.session_state.has_housing = "No"
+            st.session_state.step = 5
+# STEP 5
+if st.session_state.step == 5:
+    st.markdown("### Summary of Your Answers:")
+    st.markdown(f"**Reason:** <span style='color: green;'>{st.session_state.relocation_reason}</span>", unsafe_allow_html=True)
+    st.markdown(f"**Income:** <span style='color: green;'>{st.session_state.income_range}</span>", unsafe_allow_html=True)
+    st.markdown(f"**Housing Arranged:** <span style='color: green;'>{st.session_state.has_housing}</span>", unsafe_allow_html=True)
+    st.write("---")
+    st.markdown("### Final Recommendation:")
+
+
+    reason = st.session_state.relocation_reason
+    income = st.session_state.income_range
+    housing = st.session_state.has_housing
+
+    if reason == "I am a digital nomad":
+        if income == "Above $3,000" and housing == "Yes":
+            st.success("You may qualify for the D8 Digital Nomad Visa. You already meet two key requirements: income and housing.")
+        elif income == "Above $3,000" and housing == "No":
+            st.warning("You may qualify for the D8 Visa based on income, but housing proof is still required.")
+        else:
+            st.warning("Digital Nomad visa typically requires high income and proof of housing. Consider other options or consult an expert.")
+
+    elif reason == "I am retired":
+        if income in ["$1,000 - $3,000", "Above $3,000"] and housing == "Yes":
+            st.success("You may qualify for the D7 Retirement Visa. You have sufficient income and housing arranged.")
+        elif income in ["$1,000 - $3,000", "Above $3,000"] and housing == "No":
+            st.warning("You’re financially eligible for D7, but housing proof will be required to move forward.")
+        else:
+            st.warning("You may need to show additional resources and housing confirmation.")
+
+    elif reason == "Family reunion":
+        if housing == "Yes":
+            st.success("You may qualify for a Family Reunification Visa. Housing is one of the key supporting documents.")
+        else:
+            st.warning("You may still qualify, but having housing proof will strengthen your application.")
+
+    st.markdown("*Remember: visa requirements change. This tool is a general guide. Always verify with official sources.*")
+    st.button("🔄 Restart", on_click=reset)
+
