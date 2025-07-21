@@ -1,15 +1,19 @@
 import streamlit as st
 
-# Load and display the icon
-st.image("galo.png", width=100)
-
 # Initialize step in session state
 if "step" not in st.session_state:
     st.session_state.step = 0
 
 # Step 0: Present three CTA buttons
 if st.session_state.step == 0:
-    st.write("Do you plan to move to Portugal by starting a business, working independently, or investing?")
+    # Create two columns for inline layout
+    col_icon, col_text = st.columns([1, 5])  # Adjust width ratio as needed
+    
+    with col_icon:
+        st.image("galo.png", width=100)
+    
+    with col_text:
+        st.write("Do you plan to move to Portugal by starting a business, working independently, or investing?")
     
     col1, col2, col3 = st.columns(3)
     
@@ -29,8 +33,6 @@ if st.session_state.step == 0:
             st.session_state.step = 1
             st.experimental_rerun()
 
-# You can add step 1 logic in the next step
 elif st.session_state.step == 1:
     st.write(f"You selected: **{st.session_state.path_choice.capitalize()}**")
-    # Placeholder for the next question
     st.write("We'll continue from here in the next step.")
