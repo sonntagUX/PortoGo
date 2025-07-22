@@ -20,7 +20,7 @@ if st.session_state.step == 0:
             st.session_state.path_choice = "business"
             st.session_state.step = 1
     with col2:
-        if st.button("Freelance / Independent Work"):
+        if st.button("Freelance Work"):
             st.session_state.path_choice = "freelance"
             st.session_state.step = 1
     with col3:
